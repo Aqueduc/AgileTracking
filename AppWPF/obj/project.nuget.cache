@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "xUcTwOFo1/XSYuYrG0Y5FnZ7t1nnDCaJLvE3JgKYC8TSDv9kjPA6ag/82xulSYv2XrLdO1YDp4lTGNHsOkd+uQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\franc\\source\\repos\\AgileTracking\\AppWPF\\AppWPF.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\franc\\.nuget\\packages\\controlzex\\4.4.0\\controlzex.4.4.0.nupkg.sha512",
+    "C:\\Users\\franc\\.nuget\\packages\\mahapps.metro\\2.4.9\\mahapps.metro.2.4.9.nupkg.sha512",
+    "C:\\Users\\franc\\.nuget\\packages\\microsoft.xaml.behaviors.wpf\\1.1.19\\microsoft.xaml.behaviors.wpf.1.1.19.nupkg.sha512",
+    "C:\\Users\\franc\\.nuget\\packages\\system.text.json\\4.7.2\\system.text.json.4.7.2.nupkg.sha512"
+  ],
+  "logs": []
+}

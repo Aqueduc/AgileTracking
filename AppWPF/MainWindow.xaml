@@ -1,0 +1,46 @@
+﻿<metro:MetroWindow x:Class="AppWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AppWPF"
+        xmlns:metro="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800"
+        BorderThickness="0"
+        GlowBrush="Black"
+        ResizeMode="CanResizeWithGrip">
+
+
+    
+    
+    
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Button Grid.Column="1" Name="btnCreateClient" Height="40" Content="Ajout Client" Click="btnCreateClient_Click"/>
+        <Button Grid.Column="2" Name="btnDeleteClient" Height="40" Content="Suppression Client" Click="btnDeleteClient_Click"/>
+        <Button Grid.Column="3" Name="btnReadClient" Height="40" Content="Affichage Clients" Click="btnReadClient_Click"/>
+        <Button Grid.Column="4" Name="btnUpdateClient" Height="40" Content="Mise à jour Client" Click="btnUpdateClient_Click"/>
+
+        <ContentControl x:Name="ContentMenu" Grid.Row="1" Grid.ColumnSpan="5"/>
+        
+        <Grid Grid.Column="0" >
+            <Menu IsMainMenu="True">
+                <MenuItem Header="Menu" Click="MenuItem_Click">Test</MenuItem>
+            </Menu>
+        </Grid>
+
+    </Grid>
+</metro:MetroWindow>
