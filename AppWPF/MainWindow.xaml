@@ -10,37 +10,45 @@
         BorderThickness="0"
         GlowBrush="Black"
         ResizeMode="CanResizeWithGrip">
+    <metro:MetroWindow.Resources>
+        <DataTemplate x:Key="HamburgerMenuItem" DataType="{x:Type metro:HamburgerMenuGlyphItem}">
+            <DockPanel Height="48" LastChildFill="True">
+                <metro:FontIcon FontFamily="Segoe MDL2 Assets" Glyph="{Binding Glyph}" Margin="15 0 0 0"/>
+                <TextBlock Text="{Binding Label}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </DockPanel>
+        </DataTemplate>
+    </metro:MetroWindow.Resources>
+
+    <DockPanel>
+        <metro:HamburgerMenu DockPanel.Dock="Left" x:Name="MainMenuSide" DisplayMode="CompactOverlay"
+                         HamburgerWidth="48" ItemTemplate="{StaticResource HamburgerMenuItem }"
+                         ItemInvoked="MainMenuSide_ItemInvoked"
+                         Content="{Binding}">
+            <metro:HamburgerMenu.HamburgerMenuHeaderTemplate>
+                <DataTemplate>
+                    <TextBlock Text="Menu Principal" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </DataTemplate>
+            </metro:HamburgerMenu.HamburgerMenuHeaderTemplate>
+            <metro:HamburgerMenu.ItemsSource>
+                <metro:HamburgerMenuItemCollection>
+                    <metro:HamburgerMenuGlyphItem Label="Gestion Client" Tag="ShowClientPage" Glyph="&#xE716;"/>
+                    <metro:HamburgerMenuGlyphItem Label="Scanning" Tag="ShowScanPage" Glyph="&#xEC5A;"/>
+                    <metro:HamburgerMenuGlyphItem Label="Paramètres" Tag="ShowConfigPage" Glyph="&#xE713;"/>
+                </metro:HamburgerMenuItemCollection>
+            </metro:HamburgerMenu.ItemsSource>
+
+            <metro:HamburgerMenu.ContentTemplate>
+                <DataTemplate>
+                    <metro:TransitioningContentControl Content="{Binding}" RestartTransitionOnContentChange="True" Transition="Default"/>
+                </DataTemplate>
+            </metro:HamburgerMenu.ContentTemplate>
 
 
-    
-    
-    
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
+        </metro:HamburgerMenu>
 
-        <Grid.RowDefinitions>
-            <RowDefinition Height="80"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
+    </DockPanel>
 
-        <Button Grid.Column="1" Name="btnCreateClient" Height="40" Content="Ajout Client" Click="btnCreateClient_Click"/>
-        <Button Grid.Column="2" Name="btnDeleteClient" Height="40" Content="Suppression Client" Click="btnDeleteClient_Click"/>
-        <Button Grid.Column="3" Name="btnReadClient" Height="40" Content="Affichage Clients" Click="btnReadClient_Click"/>
-        <Button Grid.Column="4" Name="btnUpdateClient" Height="40" Content="Mise à jour Client" Click="btnUpdateClient_Click"/>
 
-        <ContentControl x:Name="ContentMenu" Grid.Row="1" Grid.ColumnSpan="5"/>
-        
-        <Grid Grid.Column="0" >
-            <Menu IsMainMenu="True">
-                <MenuItem Header="Menu" Click="MenuItem_Click">Test</MenuItem>
-            </Menu>
-        </Grid>
 
-    </Grid>
+
 </metro:MetroWindow>

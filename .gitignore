@@ -4,3 +4,9 @@
 AppLibrary/obj/Debug/netcoreapp3.1/
 
 AppWPF/obj/Debug/netcoreapp3.1/
+
+.vs/AgileTracking/DesignTimeBuild/
+
+AppWPF/bin/Debug/netcoreapp3.1/AppWPF.dll
+
+AppWPF/bin/Debug/netcoreapp3.1/AppWPF.pdb
