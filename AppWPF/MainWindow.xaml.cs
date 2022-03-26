@@ -4,6 +4,7 @@ using AppLibrary.Utils;
 using System;
 using System.Collections.Generic;
 using System.Windows;
+using System.Windows.Controls;
 using static AppLibrary.DataObject.ActionRequest;
 
 namespace AppWPF
@@ -13,16 +14,26 @@ namespace AppWPF
     /// </summary>
     public partial class MainWindow
     {
+        private UserControl _controlDisplayed;
+        public UserControl ControlDisplayed
+        {
+            get { return _controlDisplayed; }
+            set { _controlDisplayed = value; }
+        }
+
         public MainWindow()
         {
             InitializeComponent();
+            ControlDisplayed = new UserControls.MonitoringRequests();
+            this.DataContext = ControlDisplayed;
+            
         }
 
         public void TestMethod()
         {
             var _test = App.GetBuildMockup()._clientMockup._clients;
             //Test JSON output
-            string _tmp = SerializeClass.ConstructRequest(new ActionRequest() { _token = Guid.NewGuid().ToString(),_object = new Client(), _objectType = typeof(Client).Name });
+            string _tmp = SerializeClass.ConstructRequest(new ActionRequest() { _token = Guid.NewGuid().ToString(), _object = new Client(), _objectType = typeof(Client).Name });
             FileUtils.CreateJsonFile(_tmp);
         }
 
@@ -45,14 +56,25 @@ namespace AppWPF
             _tmp._returnObj = (List<Client>)SerializeClass.ConstructResponse(_tmp._returnObj.ToString(), typeof(List<Client>));
         }
 
-        private void btnUpdateClient_Click(object sender, RoutedEventArgs e)
+        private void MainMenuSide_ItemInvoked(object sender, MahApps.Metro.Controls.HamburgerMenuItemInvokedEventArgs args)
         {
 
-        }
-
-        private void MenuItem_Click(object sender, RoutedEventArgs e)
-        {
-            ContentMenu.Content = new ClientCreateForm_UC();
+            var _tmp = args.InvokedItem as MahApps.Metro.Controls.HamburgerMenuGlyphItem;
+            switch (_tmp.Tag)
+            {
+                case "ShowClientPage":
+                    ControlDisplayed = new UserControls.ClientCreateForm_UC();
+                    break;
+                case "ShowScanPage":
+                    ControlDisplayed = new UserControls.MonitoringRequests();
+                    break;
+                case "ShowConfigPage":
+                    break;
+                default:
+                    ControlDisplayed = new UserControls.MonitoringRequests();
+                    break;
+            }
+            DataContext = ControlDisplayed;
         }
     }
 }
